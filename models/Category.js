@@ -1,14 +1,18 @@
-const { sequelize, Sequelize } = require('../controllers/database')
+const Sequelize = require('sequelize')
+const sequelize = require('../controllers/database')
 
 const Category = sequelize.define('category', {
-    label: {
-        type: Sequelize.STRING
+    id: {
+        type: Sequelize.INTEGER,
+        autoIncrement: true,
+        allowNull: false,
+        primaryKey: true,
+    },
+
+    name: {
+        type: Sequelize.STRING,
+        allowNull: false,
     }
 })
 
-Category.sync({force: true})
-        .then(() => {
-            return Category.create({
-                label: 'Metal'
-            })
-        })
+module.exports = Category

@@ -55,7 +55,7 @@ const Ware = sequelize.define('ware', {
     },
 })
 
-Ware.associate = function(models) {
+Ware.associate = models => {
     Ware.hasMany(models.Category, {
         foreignKey: 'categoryID'
     })
